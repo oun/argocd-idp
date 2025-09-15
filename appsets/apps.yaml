@@ -23,7 +23,6 @@ spec:
         targetRevision: {{ .version }}
         helm:
           releaseName: {{ .path.basename }}
-          values: {{ .values }}
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: dev
