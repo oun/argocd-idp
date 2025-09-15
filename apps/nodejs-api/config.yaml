@@ -1,0 +1,6 @@
+chart: nodejs-api
+repoURL: https://ghcr.io/oun
+version: 0.1.0
+values: |
+  image:
+    tag: sha-25ee951

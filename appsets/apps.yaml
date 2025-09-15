@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apps
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - git:
+      repoURL: https://github.com/oun/argocd-idp.git
+      revision: HEAD
+      files:
+        - path: "apps/**/config.yaml"
+  template:
+    metadata:
+      name: '{{ .path.basename }}'
+    spec:
+      project: default
+      source:
+        chart: {{ .chart }}
+        repoURL: {{ .repoURL }}
+        targetRevision: {{ .version }}
+        helm:
+          releaseName: {{ .path.basename }}
+          values: {{ .values }}
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: dev
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
