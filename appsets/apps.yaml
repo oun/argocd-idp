@@ -23,8 +23,7 @@ spec:
         targetRevision: '{{ .version }}'
         helm:
           releaseName: '{{ .path.basename }}'
-          valuesObject:
-            {{ toYaml .values | nindent 12 }}
+          values: '{{ .values }}'
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: dev
