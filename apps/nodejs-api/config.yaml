@@ -1,2 +1,5 @@
 repoURL: oci://ghcr.io/oun/nodejs-api
 version: "0.1.1"
+values:
+  image:
+    tag: sha-25ee951

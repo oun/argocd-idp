@@ -23,6 +23,7 @@ spec:
         targetRevision: '{{ .version }}'
         helm:
           releaseName: '{{ .path.basename }}'
+          valuesObject: {{ .values | toJson }}
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: dev
