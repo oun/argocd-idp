@@ -19,6 +19,7 @@ spec:
       project: default
       source:
         repoURL: '{{ .repoURL }}'
+        path: .
         targetRevision: '{{ .version }}'
         helm:
           releaseName: '{{ .path.basename }}'
