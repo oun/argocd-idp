@@ -18,10 +18,10 @@ spec:
     spec:
       project: default
       source:
-        repoURL: {{ .repoURL }}
-        targetRevision: {{ .version }}
+        repoURL: '{{ .repoURL }}'
+        targetRevision: '{{ .version }}'
         helm:
-          releaseName: {{ .path.basename }}
+          releaseName: '{{ .path.basename }}'
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: dev
